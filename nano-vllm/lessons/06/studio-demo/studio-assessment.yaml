@@ -1,0 +1,216 @@
+# Historical assessment from the original article materials, not a deployment approval.
+# Source/model/license observations below have not been revalidated in this export.
+# No Docker build, GPU runtime probe or Studio deployment was performed.
+schema_version: "1.0"
+record_type: studio_assessment
+assessment:
+  id: "assessment-20260917-minisgl-studio-demo"
+  status: stale
+  created_at: "2026-09-17T12:00:00+08:00"
+  updated_at: "2026-09-29"
+  completeness: incomplete
+  assessed_revisions:
+    source: "mini-sglang@9a91cfafe754aa85daee49998176275667eb58f2"
+    model: "Qwen/Qwen3-0.6B@revision-pending"
+    reference_implementations: []
+  target_profile_version: "l20-48gb-observed-20260917"
+
+request:
+  mode: build_from_model
+  objective: "通过 Gradio 页面体验 mini-SGLang 的 OpenAI-compatible 对话接口"
+  requested_visibility: private
+  requested_target: modelscope_studio
+
+source:
+  kind: modelscope_model
+  url: "https://modelscope.cn/models/Qwen/Qwen3-0.6B"
+  revision: "revision-pending"
+  license: "Apache-2.0"
+
+evidence:
+  - id: ev-model-card
+    kind: observed
+    source_type: official_model_card
+    source: "Qwen3-0.6B ModelScope model page"
+    locator: "https://modelscope.cn/models/Qwen/Qwen3-0.6B"
+    revision: null
+    observed_at: "2026-09-17T12:00:00+08:00"
+    summary: "模型为 0.6B 参数文本生成模型，许可为 Apache-2.0。"
+  - id: ev-minisgl-source
+    kind: observed
+    source_type: official_source
+    source: "sgl-project/mini-sglang"
+    locator: "https://github.com/sgl-project/mini-sglang/tree/9a91cfafe754aa85daee49998176275667eb58f2"
+    revision: "9a91cfafe754aa85daee49998176275667eb58f2"
+    observed_at: "2026-09-17T12:00:00+08:00"
+    summary: "源码提供 ModelScope 模型来源、OpenAI-compatible API 和 CUDA 推理路径。"
+  - id: ev-studio-profile
+    kind: observed
+    source_type: target_runtime_profile
+    source: "ModelScope Studio xGPU baseline"
+    locator: "modelscope-studio/references/xgpu-l20-profile.md"
+    revision: null
+    observed_at: "2026-09-17T12:00:00+08:00"
+    summary: "xGPU 评估基线为 NVIDIA L20 48 GB；实际运行时仍需探测。"
+
+reference_implementations: []
+
+workload:
+  modality: "text-to-text"
+  core_demo_flow: "输入中文消息，通过 mini-SGLang 流式生成回复并在 Gradio 中展示"
+  inputs: ["message", "optional system prompt", "temperature", "max tokens"]
+  outputs: ["streaming text"]
+  concurrency: 1
+  acceptance_envelope:
+    minimum:
+      description: "单轮中文问答"
+      parameters: {max_context_tokens: 2048, max_output_tokens: 128, concurrency: 1}
+      evidence_refs: [ev-model-card, ev-minisgl-source]
+    recommended:
+      description: "多轮对话 Demo 的初始验收范围"
+      parameters: {max_context_tokens: 4096, max_output_tokens: 256, concurrency: 1}
+      evidence_refs: [ev-model-card, ev-minisgl-source]
+    maximum:
+      description: "UI 暴露的输出上限；不代表模型或平台极限"
+      parameters: {max_context_tokens: 4096, max_output_tokens: 1024, queue_size: 8}
+      evidence_refs: [ev-model-card]
+
+models:
+  - role: primary
+    component: transformer
+    source: modelscope
+    url: "https://modelscope.cn/models/Qwen/Qwen3-0.6B"
+    revision: "revision-pending"
+    dtype: "bf16"
+    weight_size_gb: null
+    license: "Apache-2.0"
+    remote_code: false
+    required: true
+
+source_runtime:
+  sdk: "mini-SGLang OpenAI-compatible API"
+  gpu: "NVIDIA CUDA GPU"
+  visible_vram_gib: null
+  framework: "mini-SGLang"
+  precision: "bf16"
+
+target_runtime:
+  platform: modelscope_studio
+  sdk: docker
+  resource_class: xgpu
+  declared:
+    sku: "xGPU application label"
+    gpu: "NVIDIA L20"
+    nominal_vram_gb: 48
+    evidence_refs: [ev-studio-profile]
+  estimated:
+    peak_vram_gib: null
+    host_memory_gib: null
+    disk_gib: null
+    startup_seconds: null
+  measured: null
+
+resource_requirements:
+  model_storage_gb: null
+  host_memory_gib: null
+  gpu_memory_gib:
+    weights: null
+    activations: null
+    attention: null
+    vae_or_decoder: null
+    temporary_peak: null
+    safety_margin: null
+  disk_gib: {download: null, installed: null, cache: null}
+  startup: {download_required: true, compile_required: true, estimated_seconds: null}
+
+external_dependencies:
+  - name: "ModelScope model download"
+    kind: model
+    stage: startup
+    required: true
+    migration_action: "下载到 /mnt/workspace/.cache/modelscope，并验证缓存重启路径。"
+  - name: "mini-SGLang Python dependencies"
+    kind: package
+    stage: build
+    required: true
+    migration_action: "在 Docker 构建阶段固定源码 commit 并安装依赖。"
+
+compatibility:
+  memory: {status: unknown, finding: "Qwen3-0.6B 规模较小，但 KV Cache、CUDA Graph 与运行时峰值尚未实测。", confidence: low, evidence_refs: [ev-model-card]}
+  gpu_architecture: {status: unknown, finding: "目标 GPU 需在实际创空间内通过 nvidia-smi 和 PyTorch 探测。", confidence: low, evidence_refs: [ev-studio-profile]}
+  precision: {status: compatible, finding: "方案使用 bf16，最终支持情况由目标 GPU 实测确认。", confidence: medium, evidence_refs: [ev-minisgl-source, ev-studio-profile]}
+  cuda_kernels: {status: unknown, finding: "FlashInfer、sgl-kernel 与 CUDA 12.8/目标驱动组合尚未在创空间验证。", confidence: low, evidence_refs: [ev-minisgl-source]}
+  model_source: {status: compatible, finding: "mini-SGLang CLI 支持 ModelScope 模型来源。", confidence: high, evidence_refs: [ev-minisgl-source, ev-model-card]}
+  framework: {status: adaptation_required, finding: "创空间采用 Docker，容器内同时运行 mini-SGLang 与 Gradio。", confidence: high, evidence_refs: [ev-minisgl-source]}
+  runtime_semantics: {status: adaptation_required, finding: "Gradio 并发限制为 1，服务就绪后再开放 UI。", confidence: high, evidence_refs: [ev-minisgl-source]}
+  network: {status: adaptation_required, finding: "首次启动需要访问 ModelScope；稳定运行依赖持久化缓存。", confidence: high, evidence_refs: [ev-model-card]}
+  storage: {status: adaptation_required, finding: "模型与编译缓存统一迁移到 /mnt/workspace。", confidence: high, evidence_refs: [ev-studio-profile]}
+  license: {status: compatible, finding: "模型许可标注为 Apache-2.0；发布时保留归属和许可说明。", confidence: high, evidence_refs: [ev-model-card]}
+
+reuse:
+  candidates: []
+  selected_level: none
+  reusable_parts: ["mini-SGLang OpenAI-compatible API"]
+  replace_parts: ["公开 API 入口改为 Gradio UI"]
+  attribution_required: ["Qwen3-0.6B", "mini-SGLang"]
+  cache_compatibility: "待创空间验证"
+  update_in_place: false
+
+risks:
+  - id: risk-cuda-compatibility
+    category: runtime
+    severity: high
+    status: open
+    statement: "CUDA 12.8、目标驱动、FlashInfer 与 sgl-kernel 可能不兼容。"
+    evidence_refs: [ev-minisgl-source, ev-studio-profile]
+    mitigation: "先构建私有创空间，保留固定 commit 和完整构建日志。"
+    validation: "启动容器并完成一次流式对话。"
+    success_criteria: "所有 CUDA 扩展成功加载，生成过程无 kernel 或架构错误。"
+  - id: risk-cold-start
+    category: startup
+    severity: medium
+    status: open
+    statement: "首次模型下载和 kernel 编译可能超过平台启动等待时间。"
+    evidence_refs: [ev-minisgl-source]
+    mitigation: "缓存统一写入 /mnt/workspace，并记录首次与缓存后启动耗时。"
+    validation: "连续完成一次冷启动和一次缓存重启。"
+    success_criteria: "两次启动均能进入就绪状态，第二次不重复下载模型。"
+
+unknowns:
+  - id: unknown-target-runtime
+    question: "目标创空间的实际 GPU、驱动、CUDA 兼容性和可见显存是多少？"
+    critical: true
+    status: open
+    evidence_refs: [ev-studio-profile]
+    resolution_action: "在私有创空间执行运行时探测并记录结果。"
+  - id: unknown-peak-vram
+    question: "推荐工作负载下的峰值显存和 KV Cache 余量是多少？"
+    critical: true
+    status: open
+    evidence_refs: []
+    resolution_action: "完成 4096 token 上下文与 256 token 输出的峰值显存测试。"
+
+decision:
+  recommendation: needs_information
+  rationale: "应用结构和适配路径明确，可以保留部署草案；目标 CUDA 兼容性、峰值显存和冷启动属于关键未知项，实测前不进入正式部署。"
+  conditions: []
+  decided_at: "2026-09-17T12:00:00+08:00"
+
+implementation_plan:
+  - step: 1
+    action: "使用 Docker SDK，固定 mini-SGLang commit。"
+  - step: 2
+    action: "后端仅监听 127.0.0.1:1919，Gradio 监听 0.0.0.0:7860。"
+  - step: 3
+    action: "模型和 kernel 缓存迁移到 /mnt/workspace。"
+  - step: 4
+    action: "mini-SGLang 就绪后再启动 Gradio。"
+
+verification_plan:
+  core_flow_checks: ["single_turn", "multi_turn", "streaming", "invalid_input", "backend_restart"]
+  resource_checks: ["actual_gpu", "visible_vram", "peak_vram", "startup_time", "cache_restart_time"]
+  external_dependency_checks: ["model_download", "remaining_runtime_network_calls"]
+
+secrets: []
+approvals_required:
+  - "Docker 创空间要求阿里云账号绑定和实名认证"

@@ -1,0 +1,230 @@
+{
+  "description": "Source-relative paths and hashes before publication edits; original material retained outside this export.",
+  "files": [
+    {
+      "source": "nano_vllm/learn/blogs/01/推理Infra学习实录_01_从nano-vLLM开始.md",
+      "destination": "nano-vllm/lessons/01/article.md",
+      "source_sha256": "49b12650ac1bbf77e13b617caea6d48408922c153165768b2a7a9e49fd7da7a9"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/01/main.ipynb",
+      "destination": "nano-vllm/lessons/01/main.ipynb",
+      "source_sha256": "b453bbac25f311c266008e883722d03306be5351eaef61521c9eaabc1d6e7857"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/01/assets/nvidia-smi.png",
+      "destination": "nano-vllm/lessons/01/assets/nvidia-smi.png",
+      "source_sha256": "cc23080398d2e778d899cb12f926f198a23db3f38ada4027967eaba7e780356f"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/01/assets/nanovllm-benchmark.png",
+      "destination": "nano-vllm/lessons/01/assets/nanovllm-benchmark.png",
+      "source_sha256": "831c32a5a8498cc183f6f20694a36de8bf66039babb721007cdab8e550a707a6"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/02/推理Infra学习实录_02_nano-vLLM_vs_Transformers.md",
+      "destination": "nano-vllm/lessons/02/article.md",
+      "source_sha256": "dd59343501ab0fede4acbdfd36949ab8a3687cf4fd5c7a3c5d8531df3cb3650e"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/02/main.ipynb",
+      "destination": "nano-vllm/lessons/02/main.ipynb",
+      "source_sha256": "8fbd1a48a0e27396bb67b58578484ed64b154ab73a5dfb8bcdcd76ab223f9fda"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/03/推理Infra学习实录_03_一次generate背后发生了什么.md",
+      "destination": "nano-vllm/lessons/03/article.md",
+      "source_sha256": "35194a16c30ef56fadbc3c9a1671b64bba1b0243e5f7776cbb02460443208b0c"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/03/main.ipynb",
+      "destination": "nano-vllm/lessons/03/main.ipynb",
+      "source_sha256": "d13a066dd3ec2413d87c5e5b1c22e08021f5c2ea4f50ffbc3bd5776a5fa41008"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/03/cover-03.png",
+      "destination": "nano-vllm/lessons/03/cover-03.png",
+      "source_sha256": "ed6afdec58f976086774da7786d9b4ee997da3d3a540c117e4c048dcd2a89445"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/04/推理Infra学习实录_04_KV_Cache_Block的分配复用与回收.md",
+      "destination": "nano-vllm/lessons/04/article.md",
+      "source_sha256": "4032853e08c99d15f12766e21bbc1255ecfd31b2b3003a3a63c1f707422428a5"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/04/main.ipynb",
+      "destination": "nano-vllm/lessons/04/main.ipynb",
+      "source_sha256": "604626ee22781f3e2c9d9271d5fdb5fa320956922cf8e5c5b08204005c5d062d"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/05/推理Infra学习实录_05_从nano-vLLM到mini-SGLang.md",
+      "destination": "nano-vllm/lessons/05/article.md",
+      "source_sha256": "9cdebbebfc16546514bb2d7b62c4af354854aca371bb17f91ac3f2cdb5d45767"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/05/main.ipynb",
+      "destination": "nano-vllm/lessons/05/main.ipynb",
+      "source_sha256": "09226610b8fff2ef7004541f4198a25c901beab07cc3fc2226f55d00ce8e3cda"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/06/推理Infra学习实录_06_从推理服务到魔搭创空间.md",
+      "destination": "nano-vllm/lessons/06/article.md",
+      "source_sha256": "7c6d5612a3758869d2cd661651948beeb3d36189449e646f3214438ce13053e4"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/06/main.ipynb",
+      "destination": "nano-vllm/lessons/06/main.ipynb",
+      "source_sha256": "ec166a427c96b1731b40ffbc9d308e73d8930df72da5d7efd694637e88fdf61f"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/06/studio-demo/requirements.txt",
+      "destination": "nano-vllm/lessons/06/studio-demo/requirements.txt",
+      "source_sha256": "fd9bae5b97487c46afed1f917271a1d8a936dded1f1b833a3f8bbc73e08c2299"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/06/studio-demo/Dockerfile",
+      "destination": "nano-vllm/lessons/06/studio-demo/Dockerfile",
+      "source_sha256": "bde38a62f4b5a68a15dc435a24de6ddd6ad9bbf314961906903d57d8a9087409"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/06/studio-demo/README.md",
+      "destination": "nano-vllm/lessons/06/studio-demo/README.md",
+      "source_sha256": "d449fe0493815d4d7cf71762baf0f6f9fcdcdfda589566edabc18de36e6e8741"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/06/studio-demo/app.py",
+      "destination": "nano-vllm/lessons/06/studio-demo/app.py",
+      "source_sha256": "02d4078cc2b384e530cb5743cb61f320f012d7dbfdfdbba5a7be802af8d8fbab"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/06/studio-demo/studio-assessment.yaml",
+      "destination": "nano-vllm/lessons/06/studio-demo/studio-assessment.yaml",
+      "source_sha256": "8094616c10e59bbddb505432b395c619470a2d4e08980b5651c4435dc26c97eb"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/06/studio-demo/entrypoint.sh",
+      "destination": "nano-vllm/lessons/06/studio-demo/entrypoint.sh",
+      "source_sha256": "f203d202aa184f84039d65f135dbd96fe363a6067c245056ad18b36d8431c697"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/07/推理Infra学习实录_07_四种推理路径的统一横评.md",
+      "destination": "nano-vllm/lessons/07/article.md",
+      "source_sha256": "453cff938fcb9564990a3b0da0d6040f00560e67b142d4371bf7d683d9268c12"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/07/main.ipynb",
+      "destination": "nano-vllm/lessons/07/main.ipynb",
+      "source_sha256": "3135e7e5613fcd8285e0d6afcac3f53056a905652013a4174865cc6dfe191c98"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/pictures/cover-01.png",
+      "destination": "nano-vllm/lessons/pictures/cover-01.png",
+      "source_sha256": "8d3e1aa5ba0117725030db1cd6e5a1d7519a42cb7a6d1c24bee1bb222e874217"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/pictures/cover-03.png",
+      "destination": "nano-vllm/lessons/pictures/cover-03.png",
+      "source_sha256": "ed6afdec58f976086774da7786d9b4ee997da3d3a540c117e4c048dcd2a89445"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/pictures/cover-02.png",
+      "destination": "nano-vllm/lessons/pictures/cover-02.png",
+      "source_sha256": "93dac4b526b4f8e3a3532b5466777af720cfd0ae077943fd2f2c1a44937ee2d0"
+    },
+    {
+      "source": "nano_vllm/learn/blogs/pictures/series-cover.png",
+      "destination": "nano-vllm/lessons/pictures/series-cover.png",
+      "source_sha256": "40ea4181456f788b3e313155c9fc60a916bf2b0bee40929d3e714c6a93b903d3"
+    },
+    {
+      "source": "nano_vllm/learn/experiments/benchmarks/summarize_results.py",
+      "destination": "nano-vllm/experiments/benchmarks/summarize_results.py",
+      "source_sha256": "e7a4bf4e3d8fe123acafac443ccabeef383b5ace2efc1ff458d77358ba4e8fd8"
+    },
+    {
+      "source": "nano_vllm/learn/experiments/benchmarks/summarize_serving_results.py",
+      "destination": "nano-vllm/experiments/benchmarks/summarize_serving_results.py",
+      "source_sha256": "28bcf2750929e8a81c82ebd48d392580764338b70d02c4d1581cce144899e883"
+    },
+    {
+      "source": "nano_vllm/learn/experiments/benchmarks/run_vllm_offline.py",
+      "destination": "nano-vllm/experiments/benchmarks/run_vllm_offline.py",
+      "source_sha256": "5df8b5583cf49eea9e622eb02a30d98783d75b0c3a3ec0f7f2401744570c1596"
+    },
+    {
+      "source": "nano_vllm/learn/experiments/benchmarks/run_transformers_offline.py",
+      "destination": "nano-vllm/experiments/benchmarks/run_transformers_offline.py",
+      "source_sha256": "2c3533d7e81ca40975fc27067159e73d3dede9a6335c0e1b0286ebd57cd905c8"
+    },
+    {
+      "source": "nano_vllm/learn/experiments/benchmarks/README.md",
+      "destination": "nano-vllm/experiments/benchmarks/README.md",
+      "source_sha256": "2999c92e69607dce826251c5c3c4212402cb3393485979db7d562e6c4c062f66"
+    },
+    {
+      "source": "nano_vllm/learn/experiments/benchmarks/run_minisgl_offline.py",
+      "destination": "nano-vllm/experiments/benchmarks/run_minisgl_offline.py",
+      "source_sha256": "ded39788655174623339e1cff89c145fc63e197462f873db2b17580b51004a23"
+    },
+    {
+      "source": "nano_vllm/learn/experiments/benchmarks/run_serving_client.py",
+      "destination": "nano-vllm/experiments/benchmarks/run_serving_client.py",
+      "source_sha256": "2b012305929479a24b53fbddad5794dd70f56ac5fb4d35079008be88ced5f787"
+    },
+    {
+      "source": "nano_vllm/learn/experiments/benchmarks/common.py",
+      "destination": "nano-vllm/experiments/benchmarks/common.py",
+      "source_sha256": "a823325371b4a43d2e39cb585c640c2b4a9e54ac422479cc8833873238bd1ae5"
+    },
+    {
+      "source": "nano_vllm/learn/experiments/benchmarks/run_nanovllm_offline.py",
+      "destination": "nano-vllm/experiments/benchmarks/run_nanovllm_offline.py",
+      "source_sha256": "77611e960077a51d3c8b8a762e40f1a391b749429170a1addb7fe112de880c70"
+    },
+    {
+      "source": "nano_vllm/learn/experiments/benchmarks/profile_nanovllm.py",
+      "destination": "nano-vllm/experiments/benchmarks/profile_nanovllm.py",
+      "source_sha256": "b3818d1d90611fbe33412399ccd8e7a159d85d3a4bc54af0125944ebc62779df"
+    },
+    {
+      "source": "nano_vllm/learn/experiments/benchmarks/results/README.md",
+      "destination": "nano-vllm/experiments/benchmarks/results/README.md",
+      "source_sha256": "613005b7bba968c3d48c90d988e230ddcbab458aef8dde696dcd1a04ccddebd4"
+    },
+    {
+      "source": "twinkle/modelscope-twinkle-taas-legal-lora-experience.md",
+      "destination": "twinkle/article.md",
+      "source_sha256": "d8daea5a85dae2e5e3f45d09c838e9ebb2a56b9dcddcaedb89ea8faeafcfd5b4"
+    },
+    {
+      "source": "twinkle/twinkle-legal-taas-experience-log.md",
+      "destination": "twinkle/notes/experience-log.md",
+      "source_sha256": "96997dcdb0b0fdcfcc677c7dff6bc197ae26a636a67c523ff49ffd096971f1b1"
+    },
+    {
+      "source": "twinkle/main.py",
+      "destination": "twinkle/examples/main.py",
+      "source_sha256": "dd49c951a5f49ed0b2afaa55869a583d3265411dccbe9ef8700c760b25787ded"
+    },
+    {
+      "source": "twinkle/inference.py",
+      "destination": "twinkle/examples/inference.py",
+      "source_sha256": "3c9ee62d7bf60e402d1dcea781a45142660a5b44da267cb393428c496901fcbe"
+    },
+    {
+      "source": "twinkle/legal_eval.py",
+      "destination": "twinkle/examples/legal_eval.py",
+      "source_sha256": "01d394eddbf68886f4ce11d44e06ba36774d943a93c9ef403f0303c6a07ff6d5"
+    },
+    {
+      "source": "nano_vllm/nano_vllm源码/LICENSE",
+      "destination": "licenses/nano-vllm-MIT.txt",
+      "source_sha256": "97648cbc67d6ed6a68ebc6a31b06c0741ff73a2abb13cc18abffd81f26cd5dd4"
+    },
+    {
+      "source": "twinkle/twinkle/LICENSE",
+      "destination": "licenses/twinkle-Apache-2.0.txt",
+      "source_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    }
+  ]
+}

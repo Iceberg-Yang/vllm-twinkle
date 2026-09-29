@@ -1,0 +1,47 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+
+# Operating system / editors
+.DS_Store
+.idea/
+.vscode/
+.qoder/
+
+# Python and Notebook runtime
+__pycache__/
+*.py[cod]
+.venv*/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+.coverage
+*.egg-info/
+build/
+dist/
+
+# Models, datasets, remote outputs and profiling traces
+.cache/
+.locks/
+models/
+checkpoints/
+outputs/
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.log
+*.trace.json
+*.zip
+*.tar.gz
+nano-vllm/experiments/benchmarks/results/*
+!nano-vllm/experiments/benchmarks/results/README.md
+
+# Cloned upstream projects (not part of the article collection)
+upstream/
+mini-sglang/

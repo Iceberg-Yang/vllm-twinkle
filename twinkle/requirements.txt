@@ -1,0 +1,8 @@
+# Reference source snapshot inspected during archival review, not a complete lock.
+# Python 3.11 recommended. Original experiment did not record its installed commit.
+twinkle-kit[client] @ git+https://github.com/modelscope/twinkle.git@e1c28b32cc10ee75901121fe708ae03fb5fc421e
+tinker==0.16.1
+python-dotenv==1.2.2
+modelscope==1.38.0
+datasets==4.8.4
+tqdm>=4.67,<5
